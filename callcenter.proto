@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package callcenter;
+
+service CallCenter {
+  rpc LiveCall(stream AudioChunk) returns (stream AudioChunk);
+}
+
+message AudioChunk {
+  bytes audio_data = 1;
+  string call_id = 2;
+  int32 sample_rate = 3;
+  int32 channels = 4;
+  string codec = 5;
+}
